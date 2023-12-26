@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<h2 class="text-center mb-5 mt-2">All scraps</h2>
+
+    <div class="container">
+      <table class=" table table-danger table-striped">
+        <tr>
+          <th>name</th>
+          <th>category</th>
+          <th>price</th>
+          <th>location</th>
+          <th>image</th>
+          <th>user</th>
+          <th>activites</th>
+        </tr>
+        {% for scrap in data %}
+        <tr>
+          <td>{{scrap.name}}</td>
+          <td>{{scrap.category}}</td>
+          <td>{{scrap.price}}</td>
+          <td>{{scrap.location}}</td>
+          <td>{{scrap.image}}</td>
+          <td>{{scrap.user}}</td>
+          <td>
+           <button class="btn btn-outline-info text-white"> <a href="{% url 'scrap-detail' scrap.id %}" class="text-decoration-none">View</a></button>
+          <button class="btn btn-outline-secondary"> <a href="{% url 'scrap-remove' scrap.id %}" class="text-decoration-none">Delete</a></button>
+          <button class="btn btn-outline-secondary"> <a href="{% url 'scrap-change' scrap.id %}" class="text-decoration-none">edit</a></button>
+          
+        </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+{%endblock%}
